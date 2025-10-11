@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format:fix": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "lint:fix": "eslint . --fix",
+    "lint:check": "eslint . --check"
   },
   "repository": {
     "type": "git",
@@ -19,8 +21,11 @@
   },
   "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
   "devDependencies": {
+    "@eslint/js": "^9.37.0",
     "@types/node": "^24.7.1",
+    "eslint": "^9.37.0",
     "prettier": "3.6.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0"
   }
 }

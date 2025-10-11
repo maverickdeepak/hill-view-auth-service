@@ -1,5 +1,4 @@
 function welcome(name: string) {
-  console.log("Welcome: " + name);
+    console.log(name)
 }
-
-welcome("Hello World!");
+welcome('Hello World!')
