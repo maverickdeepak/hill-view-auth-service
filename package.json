@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
   "devDependencies": {
+    "@types/node": "^24.7.1",
     "typescript": "^5.9.3"
   }
 }
