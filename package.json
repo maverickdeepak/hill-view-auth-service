@@ -1,33 +1,39 @@
 {
-  "name": "hill-view-pizza-auth-service",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format:fix": "prettier . --write",
-    "format:check": "prettier . --check",
-    "lint:fix": "eslint . --fix",
-    "lint:check": "eslint .",
-    "prepare": "husky"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maverickdeepak/hill-view-auth-service.git"
-  },
-  "author": "Deepak",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/maverickdeepak/hill-view-auth-service/issues"
-  },
-  "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
-  "devDependencies": {
-    "@eslint/js": "^9.37.0",
-    "@types/node": "^24.7.1",
-    "eslint": "^9.37.0",
-    "husky": "^9.1.7",
-    "prettier": "3.6.2",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.0"
-  }
+    "name": "hill-view-pizza-auth-service",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format:fix": "prettier . --write",
+        "format:check": "prettier . --check",
+        "lint:fix": "eslint . --fix",
+        "lint:check": "eslint .",
+        "prepare": "husky"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maverickdeepak/hill-view-auth-service.git"
+    },
+    "author": "Deepak",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/maverickdeepak/hill-view-auth-service/issues"
+    },
+    "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
+    "devDependencies": {
+        "@eslint/js": "^9.37.0",
+        "@types/node": "^24.7.1",
+        "eslint": "^9.37.0",
+        "husky": "^9.1.7",
+        "prettier": "3.6.2",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.46.0"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "npm run format:fix",
+            "npm run lint:fix"
+        ]
+    }
 }
