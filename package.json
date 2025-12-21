@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "format:fix": "prettier . --write",
@@ -23,7 +24,7 @@
     "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
     "devDependencies": {
         "@eslint/js": "^9.37.0",
-        "@types/node": "^24.7.1",
+        "@types/node": "^24.10.4",
         "eslint": "^9.37.0",
         "husky": "^9.1.7",
         "prettier": "3.6.2",
@@ -35,5 +36,8 @@
             "npm run format:fix",
             "npm run lint:fix"
         ]
+    },
+    "dependencies": {
+        "dotenv": "^17.2.3"
     }
 }
