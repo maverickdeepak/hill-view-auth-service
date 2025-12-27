@@ -9,7 +9,7 @@ app.get('/', async (req: Request, res: Response, _next: NextFunction) => {
     res.send('Welcome to auth service')
 })
 
-// global middleware
+// global middleware for error handling
 app.use(
     (error: HttpError, req: Request, res: Response, _next: NextFunction) => {
         logger.error(error.message)
