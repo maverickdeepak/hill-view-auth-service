@@ -5,6 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
+        "dev": "NODE_OPTIONS='--disable-warning=EXPERIMENTAL_LOADER' nodemon --exec \"node --import ./loader.mjs\" src/server.ts",
         "test": "echo \"Error: no test specified\" && exit 1",
         "format:fix": "prettier . --write",
         "format:check": "prettier . --check",
@@ -24,10 +25,13 @@
     "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
     "devDependencies": {
         "@eslint/js": "^9.37.0",
+        "@types/express": "^5.0.6",
         "@types/node": "^24.10.4",
         "eslint": "^9.37.0",
         "husky": "^9.1.7",
+        "nodemon": "^3.1.11",
         "prettier": "3.6.2",
+        "ts-node": "^10.9.2",
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.46.0"
     },
@@ -38,6 +42,10 @@
         ]
     },
     "dependencies": {
-        "dotenv": "^17.2.3"
+        "@types/http-errors": "^2.0.5",
+        "dotenv": "^17.2.3",
+        "express": "^5.2.1",
+        "http-errors": "^2.0.1",
+        "winston": "^3.19.0"
     }
 }
