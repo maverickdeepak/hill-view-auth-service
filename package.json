@@ -6,7 +6,9 @@
     "type": "module",
     "scripts": {
         "dev": "NODE_OPTIONS='--disable-warning=EXPERIMENTAL_LOADER' nodemon --exec \"node --import ./loader.mjs\" src/server.ts",
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "vitest",
+        "test:watch": "vitest --watch",
+        "test:coverage": "vitest run --coverage",
         "format:fix": "prettier . --write",
         "format:check": "prettier . --check",
         "lint:fix": "eslint . --fix",
@@ -27,13 +29,17 @@
         "@eslint/js": "^9.37.0",
         "@types/express": "^5.0.6",
         "@types/node": "^24.10.4",
+        "@types/supertest": "^6.0.3",
+        "@vitest/coverage-v8": "^4.0.16",
         "eslint": "^9.37.0",
         "husky": "^9.1.7",
         "nodemon": "^3.1.11",
         "prettier": "3.6.2",
+        "supertest": "^7.1.4",
         "ts-node": "^10.9.2",
         "typescript": "^5.9.3",
-        "typescript-eslint": "^8.46.0"
+        "typescript-eslint": "^8.46.0",
+        "vitest": "^4.0.16"
     },
     "lint-staged": {
         "*.ts": [
