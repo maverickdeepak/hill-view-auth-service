@@ -31,5 +31,18 @@ describe('POST /auth/register', () => {
                 expect.stringContaining('json'),
             )
         })
+        it('should persist user in database', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: 'benstokes@hotmail.com',
+                password: 'Heyben@77',
+            }
+
+            const response = await request(app)
+                .post('/auth/register')
+                .send(userInfo)
+            console.log(response)
+        })
     })
 })
