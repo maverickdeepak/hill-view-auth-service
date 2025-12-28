@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '../../app.js'
+import app from '../../app'
 
 describe('POST /auth/register', () => {
     describe('Happy path - given all fields', () => {

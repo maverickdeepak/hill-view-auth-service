@@ -3,9 +3,8 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "type": "module",
     "scripts": {
-        "dev": "NODE_OPTIONS='--disable-warning=EXPERIMENTAL_LOADER' nodemon --exec \"node --import ./loader.mjs\" src/server.ts",
+        "dev": "nodemon --watch src --exec ts-node -r tsconfig-paths/register src/server.ts",
         "test": "vitest",
         "test:watch": "vitest --watch",
         "test:coverage": "vitest run --coverage",
@@ -26,20 +25,21 @@
     },
     "homepage": "https://github.com/maverickdeepak/hill-view-auth-service#readme",
     "devDependencies": {
-        "@eslint/js": "^9.37.0",
-        "@types/express": "^5.0.6",
-        "@types/node": "^24.10.4",
-        "@types/supertest": "^6.0.3",
-        "@vitest/coverage-v8": "^4.0.16",
-        "eslint": "^9.37.0",
+        "@eslint/js": "^9.16.0",
+        "@types/express": "^4.17.21",
+        "@types/node": "^22.10.2",
+        "@types/supertest": "^6.0.2",
+        "@vitest/coverage-v8": "^3.0.0",
+        "eslint": "^9.16.0",
         "husky": "^9.1.7",
         "nodemon": "^3.1.11",
-        "prettier": "3.6.2",
-        "supertest": "^7.1.4",
+        "prettier": "3.4.2",
+        "supertest": "^7.0.0",
         "ts-node": "^10.9.2",
-        "typescript": "^5.9.3",
-        "typescript-eslint": "^8.46.0",
-        "vitest": "^4.0.16"
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.18.0",
+        "vitest": "^3.0.0"
     },
     "lint-staged": {
         "*.ts": [
@@ -49,12 +49,12 @@
     },
     "dependencies": {
         "@types/http-errors": "^2.0.5",
-        "dotenv": "^17.2.3",
-        "express": "^5.2.1",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
         "http-errors": "^2.0.1",
-        "pg": "^8.16.3",
+        "pg": "^8.13.1",
         "reflect-metadata": "^0.2.2",
-        "typeorm": "^0.3.28",
-        "winston": "^3.19.0"
+        "typeorm": "^0.3.20",
+        "winston": "^3.17.0"
     }
 }

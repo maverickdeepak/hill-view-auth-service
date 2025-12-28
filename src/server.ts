@@ -1,6 +1,6 @@
-import { Config } from './config/index.js'
-import app from './app.js'
-import logger from './config/logger.js'
+import { Config } from './config'
+import app from './app'
+import logger from './config/logger'
 
 const startServer = async () => {
     try {
