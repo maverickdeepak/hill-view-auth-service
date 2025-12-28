@@ -14,4 +14,6 @@ const startServer = async () => {
     }
 }
 
-startServer()
+startServer().then((_) => {
+    console.log(_)
+})
