@@ -2,6 +2,9 @@ import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 import { User } from '../entity/User'
 import { Config } from './index'
+import logger from './logger'
+
+logger.info('Initializing database connection')
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -11,7 +14,7 @@ export const AppDataSource = new DataSource({
     password: Config.DB_PASSWORD,
     database: Config.DB_NAME,
     // do not use in production
-    synchronize: Config.NODE_ENV === 'dev',
+    synchronize: Config.NODE_ENV === 'dev' || Config.NODE_ENV === 'test',
     logging: false,
     entities: [User],
     migrations: [],

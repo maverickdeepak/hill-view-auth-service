@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import type { NextFunction, Request, Response } from 'express'
 import express from 'express'
 import { HttpError } from 'http-errors'
@@ -5,6 +6,8 @@ import logger from './config/logger'
 import authRouter from './routes/auth'
 
 const app = express()
+
+app.use(express.json())
 
 app.get('/', async (req: Request, res: Response, _next: NextFunction) => {
     res.send('Welcome to auth service')
