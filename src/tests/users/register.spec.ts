@@ -64,5 +64,18 @@ describe('POST /auth/register', () => {
             expect(users).toHaveLength(1)
             expect(users[0].firstName).toBe('Ben')
         })
+        it('should return the ID of the created user in the response body', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: 'benstokes@hotmail.com',
+                password: 'Heyben@77',
+            }
+
+            await request(app).post('/auth/register').send(userInfo)
+            const userRepository = connection.getRepository(User)
+            const users = await userRepository.find()
+            expect(users[0].id).toBeDefined()
+        })
     })
 })
