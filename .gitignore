@@ -9,7 +9,9 @@ yarn.lock
 .pnpm-debug.log
 
 # Environment files
-.env
+.env.dev
+.env.test
+.env.prod
 .env.local
 .env.development.local
 .env.test.local
@@ -36,3 +38,5 @@ dist/
 build/
 tmp/
 temp/
+
+.idea

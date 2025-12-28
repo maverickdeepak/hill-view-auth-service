@@ -11,7 +11,8 @@
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "types": ["vitest/globals", "node"]
     },
     "include": ["src/**/*", "*.ts"],
     "exclude": ["node_modules", "dist"]
