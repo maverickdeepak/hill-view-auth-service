@@ -92,5 +92,36 @@ describe('POST /auth/register', () => {
             expect(user[0]).toHaveProperty('role')
             expect(user[0].role).toBe('customer')
         })
+        it('should store the hashed password in the database', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: 'benstokes@hotmail.com',
+                password: 'Heyben@77',
+            }
+
+            await request(app).post('/auth/register').send(userInfo)
+            const userRepository = connection.getRepository(User)
+            const users = await userRepository.find()
+
+            expect(users[0].password).not.toBe(userInfo.password)
+            expect(users[0].password).toHaveLength(60)
+        })
+        it('should store unique email addresses in the database and return 400 is duplicate email found', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: 'benstokes@hotmail.com',
+                password: 'Heyben@77',
+            }
+
+            const userRepository = connection.getRepository(User)
+            await userRepository.save({ ...userInfo })
+
+            const response = await request(app)
+                .post('/auth/register')
+                .send(userInfo)
+            expect(response.statusCode).toBe(400)
+        })
     })
 })
