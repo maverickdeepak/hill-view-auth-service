@@ -124,4 +124,20 @@ describe('POST /auth/register', () => {
             expect(response.statusCode).toBe(400)
         })
     })
+
+    describe('Sad path - given invalid email address', () => {
+        it('should return 400 if email field is missing', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: '',
+                password: 'Heyben@77',
+            }
+
+            const response = await request(app)
+                .post('/auth/register')
+                .send(userInfo)
+            expect(response.statusCode).toBe(400)
+        })
+    })
 })

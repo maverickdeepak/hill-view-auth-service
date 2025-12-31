@@ -2,6 +2,8 @@ import type { NextFunction, Response } from 'express'
 import { RegisterUserRequestBody } from '../types'
 import { UserService } from '../service/UserService'
 import Logger from '../config/logger'
+import createHttpError from 'http-errors'
+import { validationResult } from 'express-validator'
 
 export class AuthController {
     constructor(
@@ -14,7 +16,16 @@ export class AuthController {
         res: Response,
         next: NextFunction,
     ) {
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            const err = createHttpError(400, 'Email is required')
+            next(err)
+            return
+        }
+
         const { firstName, lastName, email, password } = req.body
+
         try {
             const user = await this.userService.create({
                 firstName,

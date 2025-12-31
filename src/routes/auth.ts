@@ -1,8 +1,9 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import { AuthController } from '../controllers/AuthController'
 import { UserService } from '../service/UserService'
 import { AppDataSource } from '../config/data-source'
 import { User } from '../entity/User'
+import registerValidators from '../validators/register-validators'
 
 // create router
 const router = express.Router()
@@ -16,8 +17,11 @@ const userService = new UserService(userRepository)
 // create controller
 const authController = new AuthController(userService)
 
-router.post('/register', (req, res, next) =>
-    authController.register(req, res, next),
+router.post(
+    '/register',
+    registerValidators,
+    (req: Request, res: Response, next: NextFunction) =>
+        authController.register(req, res, next),
 )
 
 export default router
