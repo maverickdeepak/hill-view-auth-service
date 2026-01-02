@@ -2,7 +2,6 @@ import type { NextFunction, Response } from 'express'
 import { RegisterUserRequestBody } from '../types'
 import { UserService } from '../service/UserService'
 import Logger from '../config/logger'
-import createHttpError from 'http-errors'
 import { validationResult } from 'express-validator'
 
 export class AuthController {
@@ -19,9 +18,7 @@ export class AuthController {
         const errors = validationResult(req)
 
         if (!errors.isEmpty()) {
-            const err = createHttpError(400, 'Email is required')
-            next(err)
-            return
+            return res.status(400).json({ errors: errors.array() })
         }
 
         const { firstName, lastName, email, password } = req.body
