@@ -143,4 +143,23 @@ describe('POST /auth/register', () => {
             expect(users).toHaveLength(0)
         })
     })
+
+    describe('Normal Path - fields are not sending properly', () => {
+        it('should trim the email field', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: 'hello@gmail.com ',
+                password: 'Heyben@77',
+            }
+
+            const userRepository = connection.getRepository(User)
+
+            await request(app).post('/auth/register').send(userInfo)
+            const users = await userRepository.find()
+
+            expect(users.length).toBe(1)
+            expect(users[0].email).toBe('hello@gmail.com')
+        })
+    })
 })
