@@ -123,6 +123,40 @@ describe('POST /auth/register', () => {
                 .send(userInfo)
             expect(response.statusCode).toBe(400)
         })
+        it('should return access token and a refresh token in the cookie header', async () => {
+            const userInfo = {
+                firstName: 'Ben',
+                lastName: 'Stokes',
+                email: 'benstokes@hotmail.com',
+                password: 'Heyben@77',
+            }
+
+            const response = await request(app)
+                .post('/auth/register')
+                .send(userInfo)
+
+            const rawCookies = response.headers['set-cookie']
+
+            const cookies: string[] = Array.isArray(rawCookies)
+                ? rawCookies
+                : rawCookies
+                  ? [rawCookies]
+                  : []
+
+            let accessToken
+            let refreshToken
+            cookies.forEach((cookie: any) => {
+                if (cookie.startsWith('access_token=')) {
+                    accessToken = cookie.split(';')[0].split('=')[1]
+                }
+                if (cookie.startsWith('refresh_token=')) {
+                    refreshToken = cookie.split(';')[0].split('=')[1]
+                }
+            })
+
+            expect(accessToken).toBeTruthy()
+            expect(refreshToken).toBeTruthy()
+        })
     })
 
     describe('Sad path - given invalid email address', () => {
